@@ -1,4 +1,4 @@
-# 🌦️ Repaso de Examen de JavaScript para Desarrollo Web Frontend
+# 🌦️ Examen de JavaScript en Frontend
 
 ## 📝 Introducción
 
