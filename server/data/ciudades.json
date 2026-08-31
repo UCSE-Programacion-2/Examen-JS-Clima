@@ -1,0 +1,90 @@
+[
+  {
+    "id": "bsas",
+    "nombre": "Buenos Aires",
+    "pais": "Argentina",
+    "temperatura": 22,
+    "sensacion": 23,
+    "humedad": 65,
+    "viento": 18,
+    "condicion": "Mayormente soleado",
+    "icono": "☀️"
+  },
+  {
+    "id": "santiago",
+    "nombre": "Santiago",
+    "pais": "Chile",
+    "temperatura": 20,
+    "sensacion": 19,
+    "humedad": 50,
+    "viento": 12,
+    "condicion": "Parcialmente nublado",
+    "icono": "⛅"
+  },
+  {
+    "id": "lima",
+    "nombre": "Lima",
+    "pais": "Perú",
+    "temperatura": 24,
+    "sensacion": 25,
+    "humedad": 78,
+    "viento": 15,
+    "condicion": "Nublado con niebla matinal",
+    "icono": "☁️"
+  },
+  {
+    "id": "cdmx",
+    "nombre": "Ciudad de México",
+    "pais": "México",
+    "temperatura": 18,
+    "sensacion": 17,
+    "humedad": 70,
+    "viento": 10,
+    "condicion": "Lluvias aisladas",
+    "icono": "🌧️"
+  },
+  {
+    "id": "saopaulo",
+    "nombre": "São Paulo",
+    "pais": "Brasil",
+    "temperatura": 26,
+    "sensacion": 28,
+    "humedad": 75,
+    "viento": 14,
+    "condicion": "Tormentas eléctricas dispersas",
+    "icono": "⛈️"
+  },
+  {
+    "id": "bogota",
+    "nombre": "Bogotá",
+    "pais": "Colombia",
+    "temperatura": 16,
+    "sensacion": 15,
+    "humedad": 82,
+    "viento": 8,
+    "condicion": "Llovizna intermitente",
+    "icono": "🌦️"
+  },
+  {
+    "id": "montevideo",
+    "nombre": "Montevideo",
+    "pais": "Uruguay",
+    "temperatura": 21,
+    "sensacion": 20,
+    "humedad": 62,
+    "viento": 22,
+    "condicion": "Despejado con brisa costera",
+    "icono": "🌤️"
+  },
+  {
+    "id": "madrid",
+    "nombre": "Madrid",
+    "pais": "España",
+    "temperatura": 28,
+    "sensacion": 29,
+    "humedad": 35,
+    "viento": 11,
+    "condicion": "Soleado y caluroso",
+    "icono": "☀️"
+  }
+]

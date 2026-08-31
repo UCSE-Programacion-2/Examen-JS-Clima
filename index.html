@@ -1,24 +1,86 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consulta de Clima - Selección de Ciudad</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css"></head>
-<body>
-    <h1>Consulta de Clima - Selección de Ciudad</h1>
-    <form id="cityForm" action="clima.html" method="GET">
-        <label for="selectCity">Selecciona una ciudad:</label>
-        <select id="selectCity" name="city">
-            <!-- Aquí se cargarán las opciones de ciudades desde JavaScript -->
-        </select>
-        <br>
-        <button type="submit">Consultar Clima</button>
-    </form>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clima en Vivo - Examen de JavaScript</title>
+    <!-- Vinculación de estilos CSS -->
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="header-container">
+        <h1>🌦️ Clima en Vivo</h1>
+        <p class="subtitle">Consulta meteorológica en tiempo real y registro de consultas</p>
+      </div>
+    </header>
 
-    <br>
-    <a href="clima.html">Ir a la página de clima</a>
+    <main class="main-container">
+      <section class="card consulta-section">
+        <h2>Consultar Estado del Tiempo</h2>
+        <form id="form-clima" class="form-clima">
+          <div class="form-group">
+            <label for="select-ciudad">Seleccioná una ciudad:</label>
+            <select id="select-ciudad" name="ciudad" required>
+              <option value="" disabled selected>-- Seleccioná una ciudad --</option>
+            </select>
+          </div>
+          <button type="submit" id="btn-consultar" class="btn btn-primary">Consultar Clima</button>
+        </form>
+        <div id="mensaje-estado" class="mensaje hidden"></div>
+      </section>
 
-    <script src="./js/index.js"></script>
-</body>
+      <section id="clima-card" class="card clima-card hidden">
+        <div class="clima-header">
+          <div>
+            <h2 id="ciudad-nombre">Ciudad</h2>
+            <span id="ciudad-pais" class="badge">País</span>
+          </div>
+          <span id="icono-clima" class="clima-icono">☀️</span>
+        </div>
+
+        <div class="clima-body">
+          <div class="temp-box">
+            <span id="temp-valor" class="temp-valor">--</span>
+            <span class="temp-unidad">°C</span>
+          </div>
+          <p id="condicion-texto" class="condicion-texto">Condición actual</p>
+        </div>
+
+        <div class="clima-detalles">
+          <div class="detalle-item">
+            <span class="detalle-label">Sensación térmica</span>
+            <span id="sensacion-valor" class="detalle-valor">--°C</span>
+          </div>
+          <div class="detalle-item">
+            <span class="detalle-label">Humedad</span>
+            <span id="humedad-valor" class="detalle-valor">--%</span>
+          </div>
+          <div class="detalle-item">
+            <span class="detalle-label">Viento</span>
+            <span id="viento-valor" class="detalle-valor">-- km/h</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="card historial-section">
+        <div class="historial-header">
+          <h2>📋 Historial de Consultas</h2>
+          <button type="button" id="btn-limpiar-historial" class="btn btn-outline">
+            Limpiar Historial
+          </button>
+        </div>
+        <ul id="historial-lista" class="historial-lista">
+          <!-- Elementos de historial agregados dinámicamente -->
+        </ul>
+      </section>
+    </main>
+
+    <footer class="main-footer">
+      <p>Programación II - Examen Práctico de Frontend con JavaScript</p>
+    </footer>
+
+    <!-- Vinculación del script JavaScript -->
+    <script type="module" src="js/script.js"></script>
+  </body>
 </html>

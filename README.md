@@ -1,87 +1,99 @@
-# 🌦️ Examen de JavaScript en Frontend
+# 🌦️ Examen: Aplicación de Clima en Vivo con JavaScript
 
-## 📝 Introducción
+## 📋 Objetivo del Examen
 
-El objetivo de este repaso de examen es desarrollar una aplicación web de consulta de clima utilizando HTML, CSS y JavaScript. Este repositorio contiene los archivos `index.html`, `clima.html` y `datos.json`. Deberás crear los archivos JavaScript necesarios para dinamizar las páginas y cumplir con los requerimientos funcionales.
+En este examen práctico deberás desarrollar una **aplicación web interactiva para la consulta del estado del tiempo en diversas ciudades**, conectando una interfaz frontend desarrollada con **HTML, CSS y JavaScript Vanilla** a un **servidor backend local en Node.js/Express**.
 
-## 📂 Archivos proporcionados
+La aplicación debe permitir:
 
-- **index.html:** Página principal donde el usuario seleccionará una ciudad para consultar el clima.
-- **clima.html:** Página que mostrará el clima de la ciudad seleccionada y un historial de consultas.
-- **datos.json:** Archivo JSON que contiene los datos de clima de diversas ciudades.
+1. Consultar dinámicamente la lista de ciudades disponibles desde el backend.
+2. Obtener y mostrar las condiciones meteorológicas detalladas (temperatura, condición, humedad, viento y sensación térmica).
+3. Guardar el historial de consultas en el navegador mediante `localStorage`.
+4. Mostrar el historial y permitir su limpieza interactiva.
 
-## ✅ Tareas a realizar
+---
 
-### 1. Crear el archivo `index.js`
+## 📌 Tabla de Entregas / Issues de GitHub
 
-Este archivo manejará la lógica de la página `index.html`.
+Cada entrega se corresponde con un **issue automático** en tu repositorio de GitHub. Para cerrar cada issue automáticamente, incluye el commit sugerido exacto al subir tu solución a la rama principal (`main`).
 
-#### Instrucciones:
+| Entrega | Tarea a Realizar                                                                                                                   | Commit Sugerido                                                |
+| :------ | :--------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------- |
+| **#1**  | Vincular `css/styles.css` y `js/script.js` en `index.html`.                                                                        | `feat(html): vincular css y script js al html`                 |
+| **#2**  | Consumir la API local (`/api/ciudades` y `/api/clima/:id`) usando `fetch` y `async/await`.                                         | `feat(js): consumir api de clima con fetch y async await`      |
+| **#3**  | Renderizar dinámicamente las opciones del selector de ciudades y los datos climáticos en el DOM.                                   | `feat(js): renderizar ciudades y datos de clima en el dom`     |
+| **#4**  | Capturar el evento `submit` del formulario, prevenir la recarga con `preventDefault()` y procesar la consulta.                     | `feat(js): capturar submit del formulario y procesar consulta` |
+| **#5**  | Persistir las consultas en `localStorage`, renderizar el historial al iniciar y permitir su limpieza con `#btn-limpiar-historial`. | `feat(js): persistir y gestionar historial en localstorage`    |
 
-1. **Cargar opciones en el selector de ciudades:**
-    - Leer el archivo `datos.json`.
-    - Llenar el selector de ciudades con los datos correspondientes.
+---
 
-2. **Manejar el envío del formulario:**
-    - Al hacer clic en el botón "Consultar Clima", guardar la ciudad seleccionada en el `localStorage` y redirigir a la página `clima.html`.
+## 🛠️ Especificación Técnica y Requerimientos
 
-### 2. Crear el archivo `clima.js`
+### 1. Servidor Backend Local
 
-Este archivo manejará la lógica de la página `clima.html`.
+El servidor Express provisto corre en el puerto `3000` con CORS habilitado:
 
-#### Instrucciones:
+- **`GET http://localhost:3000/api/ciudades`**: Devuelve el arreglo completo de ciudades con sus datos meteorológicos.
+- **`GET http://localhost:3000/api/clima/:id`**: Devuelve los datos específicos de la ciudad solicitada (por ID o nombre).
 
-1. **Mostrar clima de la ciudad seleccionada:**
-    - Leer la ciudad seleccionada del `localStorage`.
-    - Mostrar el clima de la ciudad en una tabla.
+Para iniciar el servidor backend:
 
-2. **Mostrar historial de consultas:**
-    - Leer el historial de consultas guardado en el `localStorage`.
-    - Mostrar las consultas en una lista.
+```bash
+npm start
+```
 
-3. **Limpiar historial de consultas:**
-    - Añadir un botón para limpiar el historial de consultas.
-    - Al hacer clic en el botón, limpiar el `localStorage` y actualizar la lista.
+### 2. Elementos Clave del DOM
 
-## 📋 Requerimientos funcionales
+- **`#select-ciudad`**: Elemento `<select>` donde deben cargarse las opciones (`<option value="id">Nombre, País</option>`).
+- **`#form-clima`**: Formulario que dispara la consulta.
+- **`#clima-card`**: Tarjeta donde se visualiza el clima actual (debe quitarse la clase `hidden` al consultar).
+- **`#ciudad-nombre`** y **`#ciudad-pais`**: Nombre y país de la ciudad.
+- **`#temp-valor`**: Temperatura en grados.
+- **`#condicion-texto`**: Texto descriptivo del clima.
+- **`#icono-clima`**: Emoji/icono del clima.
+- **`#sensacion-valor`**, **`#humedad-valor`**, **`#viento-valor`**: Valores de los detalles técnicos.
+- **`#historial-lista`**: Elemento `<ul>` donde se listan las consultas guardadas.
+- **`#btn-limpiar-historial`**: Botón que limpia los datos en `localStorage` y actualiza la lista.
 
-### index.html
-- **Selector de ciudades:** El selector debe llenarse dinámicamente con los datos del archivo `datos.json`.
-- **Enviar formulario:** Al hacer clic en "Consultar Clima", la ciudad seleccionada debe guardarse en el `localStorage` y el usuario debe ser redirigido a `clima.html`.
+### 3. Almacenamiento Local (`localStorage`)
 
-### clima.html
-- **Mostrar clima:** Mostrar el clima de la ciudad seleccionada en una tabla.
-- **Mostrar historial de consultas:** Mostrar las consultas guardadas en el `localStorage` en una lista.
-- **Limpiar historial:** Debe haber un botón para limpiar el historial de consultas.
+- **Clave obligatoria**: `'clima_historial'`
+- **Estructura**: Arreglo de objetos con `{ ciudad, temperatura, condicion, fecha }`.
+- Utilizar `JSON.stringify()` para guardar y `JSON.parse()` para leer.
 
-## 🚀 Guía de implementación
+---
 
-### Paso 1: Cargar datos en el selector de ciudades
+## 🧪 Comandos de Prueba y Autoevaluación
 
-1. Crear una función para leer el archivo `datos.json`.
-2. Llenar el selector de ciudades con los datos del JSON.
+Antes de entregar, podés autoevaluar tu trabajo localmente:
 
-### Paso 2: Manejar el envío del formulario
+```bash
+# Ejecutar todas las pruebas automáticas
+npm test
 
-1. Crear una función para manejar el evento de envío del formulario.
-2. Guardar la ciudad seleccionada en el `localStorage`.
-3. Redirigir al usuario a `clima.html` después de guardar la ciudad seleccionada.
+# Ejecutar una prueba individual
+npm run test:link
+npm run test:fetch
+npm run test:render
+npm run test:events
+npm run test:storage
 
-### Paso 3: Mostrar clima de la ciudad seleccionada
+# Validar estilo y calidad de código
+npm run lint
+npm run format:check
+```
 
-1. Leer la ciudad seleccionada del `localStorage`.
-2. Mostrar el clima de la ciudad en una tabla en `clima.html`.
+---
 
-### Paso 4: Mostrar historial de consultas
+## 🚀 Instrucciones para la Ejecución Local
 
-1. Leer las consultas guardadas en el `localStorage`.
-2. Mostrar las consultas en una lista en `clima.html`.
-
-### Paso 5: Limpiar historial de consultas
-
-1. Añadir un botón para limpiar el historial de consultas.
-2. Al hacer clic en el botón, limpiar el `localStorage` y actualizar la lista.
-
-## 🧪 Evaluación
-
-Se evaluará la correcta implementación de las funcionalidades descritas, la limpieza y organización del código, y el manejo adecuado de eventos y almacenamiento local en JavaScript.
+1. Instalar dependencias:
+   ```bash
+   npm install
+   ```
+2. Iniciar el servidor local:
+   ```bash
+   npm start
+   ```
+3. Abrir `index.html` en el navegador (usando la extensión **Live Server** de VS Code).
+4. Abrir la consola de herramientas de desarrollador (**F12**) para verificar peticiones de red y depurar posibles errores.
